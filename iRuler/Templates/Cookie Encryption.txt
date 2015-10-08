@@ -1,0 +1,17 @@
+when RULE_INIT {
+   set ::key [AES::key]
+}
+
+when HTTP_RESPONSE {
+   set decrypted [HTTP::cookie "MyCookie"]
+   HTTP::cookie remove "MyCookie"
+   set encrypted [b64encode [AES::encrypt $::key $decrypted]]
+   HTTP::cookie insert name "MyCookie" value $encrypted
+}
+
+when HTTP_REQUEST {
+   set encrypted [HTTP::cookie "MyCookie"]
+   HTTP::cookie remove "MyCookie"
+   set decrypted [AES::decrypt $::key [b64decode $encrypted]]
+   HTTP::cookie insert name "MyCookie" value $decrypted
+}

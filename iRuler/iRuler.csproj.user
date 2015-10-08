@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <PublishUrlHistory>D:\src\DC4\Labs\Publish\iRuler\web\|D:\src\DC4\Labs\Publish\iRuler\cd\|c:\src\icontrol\2005\publish\iRuler\cd\|c:\src\icontrol\2005\publish\|http://localhost/iRuler/</PublishUrlHistory>
+    <InstallUrlHistory>http://devcentral.f5.com/Apps/iRuler/</InstallUrlHistory>
+    <SupportUrlHistory>http://devcentral.f5.com/labs/iRuleEditor/iRuler.htm|http://devcentral.f5.com/labs/iRuler/iRuler.htm</SupportUrlHistory>
+    <UpdateUrlHistory>
+    </UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+</Project>

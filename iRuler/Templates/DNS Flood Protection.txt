@@ -1,0 +1,81 @@
+when RULE_INIT {
+  set ::maxquery 100
+  set ::holdtime 600
+  array set ::usertable { }
+  array set ::blacklist { }
+}
+
+when CLIENT_DATA {
+  set srcip [IP::remote_addr]
+#  log "src=$srcip"
+  set currtime [clock second]
+#  log "currtime=$currtime"
+  if { [ info exists ::blacklist($srcip) ] } {
+    
+    if { $::holdtime > [expr ${currtime} - $::blacklist($srcip) ] } {
+      drop
+      log "drop $srcip"
+      return    
+    } else {
+      unset ::blacklist($srcip)
+      log "remove $srcip from blacklist"
+    }
+  }
+  if { [ info exists ::usertable(time,$srcip)] and $currtime == $::usertable(time,$srcip) } {
+    incr ::usertable(freq,$srcip)
+    log "$srcip^$::usertable(time,$srcip)^$::usertable(freq,$srcip)"
+    if { $::usertable(freq,$srcip) > $::maxquery } {
+      log "new blacklist member <$srcip> with $::usertable(freq,$srcip) times"
+      set ::blacklist($srcip) $currtime
+      unset ::usertable(freq,$srcip)
+      unset ::usertable(time,$srcip)
+      drop
+      return
+    }
+  } else {
+    set ::usertable(freq,$srcip) 1
+    set ::usertable(time,$srcip) $currtime
+#    log "new member <$srcip><$currtime>"
+  }
+  pool dnsserver
+}when RULE_INIT {
+  set ::maxquery 100
+  set ::holdtime 600
+  array set ::usertable { }
+  array set ::blacklist { }
+}
+
+when CLIENT_DATA {
+  set srcip [IP::remote_addr]
+#  log "src=$srcip"
+  set currtime [clock second]
+#  log "currtime=$currtime"
+  if { [ info exists ::blacklist($srcip) ] } {
+    
+    if { $::holdtime > [expr ${currtime} - $::blacklist($srcip) ] } {
+      drop
+      log "drop $srcip"
+      return    
+    } else {
+      unset ::blacklist($srcip)
+      log "remove $srcip from blacklist"
+    }
+  }
+  if { [ info exists ::usertable(time,$srcip)] and $currtime == $::usertable(time,$srcip) } {
+    incr ::usertable(freq,$srcip)
+    log "$srcip^$::usertable(time,$srcip)^$::usertable(freq,$srcip)"
+    if { $::usertable(freq,$srcip) > $::maxquery } {
+      log "new blacklist member <$srcip> with $::usertable(freq,$srcip) times"
+      set ::blacklist($srcip) $currtime
+      unset ::usertable(freq,$srcip)
+      unset ::usertable(time,$srcip)
+      drop
+      return
+    }
+  } else {
+    set ::usertable(freq,$srcip) 1
+    set ::usertable(time,$srcip) $currtime
+#    log "new member <$srcip><$currtime>"
+  }
+  pool dnsserver
+}

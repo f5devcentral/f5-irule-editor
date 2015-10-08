@@ -1,0 +1,6 @@
+when HTTP_RESPONSE {
+  #
+  # Remove all but the given headers.
+  #
+  HTTP::header sanitize "ETag" "Content-Type" "Connection"
+}

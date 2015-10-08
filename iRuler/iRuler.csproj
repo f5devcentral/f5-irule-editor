@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B26C5CEC-943D-48F3-A052-DA8E1684832A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iRuler</RootNamespace>
+    <AssemblyName>iRuler</AssemblyName>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>1DD3C17AC1AE039D9964DA5C161EDDF83A1A8B67</ManifestCertificateThumbprint>
+    <ManifestKeyFile>iRuler_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignManifests>true</SignManifests>
+    <PublishUrl>D:\src\Publish\iRuler\web\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://devcentral.f5.com/Apps/iRuler/</InstallUrl>
+    <UpdateUrl>http://devcentral.f5.com/Apps/iRuler/</UpdateUrl>
+    <SupportUrl>http://devcentral.f5.com/labs/iRuleEditor/iRuler.htm</SupportUrl>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>F5 iRule Editor</ProductName>
+    <PublisherName>F5 Networks</PublisherName>
+    <ApplicationVersion>0.9.1.%2a</ApplicationVersion>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <ApplicationRevision>4</ApplicationRevision>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="iControl, Version=9.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\iControl.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET, Version=1.0.2350.23701, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rdparty\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialogs\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AboutBox.designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DataGroupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DataGroupDialog.designer.cs">
+      <DependentUpon>DataGroupDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DataGroupsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DataGroupsDialog.designer.cs">
+      <DependentUpon>DataGroupsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FindDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FindDialog.designer.cs">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\GenTrafficDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\GenTrafficDialog.designer.cs">
+      <DependentUpon>GenTrafficDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\IndentionSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\IndentionSettingsDialog.Designer.cs">
+      <DependentUpon>IndentionSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\iRuleInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\iRuleInfoDialog.Designer.cs">
+      <DependentUpon>iRuleInfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\LogViewerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\LogViewerDialog.Designer.cs">
+      <DependentUpon>LogViewerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PromptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\PromptDialog.Designer.cs">
+      <DependentUpon>PromptDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ShareDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ShareDialog.Designer.cs">
+      <DependentUpon>ShareDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StatusWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\TipOfDayDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\TipOfDayDialog.Designer.cs">
+      <DependentUpon>TipOfDayDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ValuePromptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ValuePromptDialog.Designer.cs">
+      <DependentUpon>ValuePromptDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="iRulerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="iRulerMain.designer.cs">
+      <DependentUpon>iRulerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialogs\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DataGroupDialog.resx">
+      <DependentUpon>DataGroupDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DataGroupsDialog.resx">
+      <DependentUpon>DataGroupsDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FindDialog.resx">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\GenTrafficDialog.resx">
+      <DependentUpon>GenTrafficDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\iRuleInfoDialog.resx">
+      <DependentUpon>iRuleInfoDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\LogViewerDialog.resx">
+      <DependentUpon>LogViewerDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PromptDialog.resx">
+      <DependentUpon>PromptDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ShareDialog.resx">
+      <DependentUpon>ShareDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\StatusWindow.resx">
+      <DependentUpon>StatusWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\TipOfDayDialog.resx">
+      <DependentUpon>TipOfDayDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ValuePromptDialog.resx">
+      <DependentUpon>ValuePromptDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="iRulerMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>iRulerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Utility\wsdl\GlobalLB.Rule.wsdl" />
+    <None Include="Utility\wsdl\LocalLB.Class.wsdl" />
+    <None Include="Utility\wsdl\LocalLB.Pool.wsdl" />
+    <None Include="Utility\wsdl\LocalLB.Rule.wsdl" />
+    <None Include="Utility\wsdl\LocalLB.VirtualServer.wsdl" />
+    <None Include="Utility\wsdl\System.ConfigSync.wsdl" />
+    <None Include="Utility\wsdl\System.SystemInfo.wsdl" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utility\CIDRHelper.cs" />
+    <Compile Include="Utility\Clients.cs" />
+    <Compile Include="Utility\Configuration.cs" />
+    <Compile Include="Utility\FileTransfer.cs" />
+    <Compile Include="Utility\iRuleDefinitionComparer.cs" />
+    <Compile Include="Utility\iRuleInfo.cs" />
+    <Compile Include="Utility\Printing.cs" />
+    <Compile Include="Utility\SearchInfo.cs" />
+    <Compile Include="Utility\Settings.cs" />
+    <Compile Include="Utility\Updater.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.ico" />
+    <None Include="Help\iRuler.htm" />
+    <EmbeddedResource Include="Dialogs\IndentionSettingsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>IndentionSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="iRuler.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\f5b_Fullcolor.jpg" />
+    <EmbeddedResource Include="Resources\Toolbar.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarArchive.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarCheckSyntax.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarConnect.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarCopy.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarCut.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarDataGroups.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarDelete.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarDisconnect.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarDocument.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarFind.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarFolder.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarGlobalLB.bmp" />
+    <EmbeddedResource Include="Resources\ToolbariRule.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarLightbulb.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarLocalLB.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarNew.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarPaste.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarProperties.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarRedo.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarRefresh.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarSave.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarSaveAll.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarShare.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarTraffic.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarUndo.bmp" />
+    <EmbeddedResource Include="Resources\ToolbarWebLink.bmp" />
+    <None Include="iRuler_TemporaryKey.pfx" />
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+    <None Include="Dialogs\Templates\Blank.txt" />
+    <None Include="Dialogs\Templates\Cookie Encryption.txt" />
+    <None Include="Dialogs\Templates\Credit Card Scrubber.txt" />
+    <None Include="Dialogs\Templates\DNS Flood Protection.txt" />
+    <None Include="Dialogs\Templates\Limit Connections From Client.txt" />
+    <None Include="Dialogs\Templates\Redirect on Weak Encryption.txt" />
+    <None Include="Dialogs\Templates\Server Resource Cloaking.txt" />
+    <None Include="Dialogs\Templates\SMTP Proxy.txt" />
+    <None Include="Dialogs\Templates\_Events.txt" />
+    <None Include="Dialogs\Templates\_Manifest.txt" />
+    <None Include="Dialogs\Templates\_Tips.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dialogs\Templates\_GTMEvents.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ToolbarConfig.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="iControl\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

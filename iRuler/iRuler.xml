@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Scintilla xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <globals>
+    <value name="caret-fore">0x000000</value>
+    <value name="caret-line">0xffffff</value>
+    <value name="tab-width">4</value>
+    <value name="use-tabs">true</value>
+    <!--
+		<value name="comment-font">Lucida Sans Unicode</value>
+		<value name="keyword-color">blue</value>
+		<value name="operator-color">purple</value>		
+		<value name="code-color">black</value>
+	-->
+  </globals>
+  <style-classes>
+    <!-- 
+		<style-class name="jscript" key="0" fore="0x000000" back="0xFFFFFF" size="10" font="Courier New" />
+		-->
+  </style-classes>
+  <keyword-classes>
+
+    <keyword-class name="iRule-LTM-tokens">
+      contains ends_with equals matches matches_regex starts_with and not or
+
+      ACCESS::acl
+      ACCESS::disable
+      ACCESS::enable
+      ACCESS::policy
+      ACCESS::respond
+      ACCESS::restrict_irule_events
+      ACCESS::session
+      ACCESS::user
+      ACCESS::uuid
+      accumulate
+      active_members
+      active_nodes
+      ADAPT::allow
+      ADAPT::enable
+      ADAPT::preview_size
+      ADAPT::result
+      ADAPT::select
+      ADAPT::service_down_action
+      ADAPT::timeout
+      after
+      AES::decrypt
+      AES::encrypt
+      AES::key
+      ASM::client_ip
+      ASM::disable
+      ASM::enable
+      ASM::payload
+      ASM::raise
+      ASM::severity
+      ASM::status
+      ASM::support_id
+      ASM::unblock
+      ASM::violation
+      ASM::violation_data
+      ASN1::decode
+      ASN1::element
+      ASN1::encode
+      AUTH::abort
+      AUTH::authenticate
+      AUTH::authenticate_continue
+      AUTH::cert_credential
+      AUTH::cert_issuer_credential
+      AUTH::last_event_session_id
+      AUTH::password_credential
+      AUTH::ssl_cc_ldap_status
+      AUTH::ssl_cc_ldap_username
+      AUTH::start
+      AUTH::status
+      AUTH::subscribe
+      AUTH::unsubscibe
+      AUTH::username_credential
+      AUTH::wantcredential_prompt
+      AUTH::wantcredential_prompt_style
+      AUTH::wantcredential_type
+      AVR::disable
+      AVR::enable
+      b64decode
+      b64encode
+      BWC::color
+      BWC::mark
+      BWC::policy
+      BWC::rate
+      cache
+      CACHE::accept_encoding
+      CACHE::age
+      CACHE::disable
+      CACHE::enable
+      CACHE::expire
+      CACHE::header
+      CACHE::headers
+      CACHE::hits
+      CACHE::payload
+      CACHE::priority
+      CACHE::trace
+      CACHE::uri
+      CACHE::useragent
+      CACHE::userkey
+      call
+      CATEGORY::analytics
+      CATEGORY::filetype
+      CATEGORY::lookup
+      CATEGORY::matchtype
+      CATEGORY::safesearch
+      class
+      CLASSIFICATION::app
+      CLASSIFICATION::category
+      CLASSIFICATION::disabled
+      CLASSIFICATION::enabled
+      CLASSIFICATION::protocol
+      CLASSIFICATION::urlcat
+      CLASSIFY::application
+      CLASSIFY::category
+      CLASSIFY::defer
+      client_addr
+      client_port
+      clientside
+      clone
+      close
+      COMPRESS::buffer_size
+      COMPRESS::disable
+      COMPRESS::enable
+      COMPRESS::gzip
+      COMPRESS::method
+      connect
+      cpu
+      crc32
+      CRYPTO::decrypt
+      CRYPTO::encrypt
+      CRYPTO::hash
+      CRYPTO::keygen
+      CRYPTO::sign
+      CRYPTO::verify
+      DATAGRAM::ip
+      DATAGRAM::ip6
+      DATAGRAM::tcp
+      decode_uri
+      DEMANGLE::disable
+      DEMANGLE::enable
+      DIAMETER::avp
+      DIAMETER::command
+      DIAMETER::disconnect
+      DIAMETER::drop
+      DIAMETER::header
+      DIAMETER::host
+      DIAMETER::is_request
+      DIAMETER::is_response
+      DIAMETER::length
+      DIAMETER::payload
+      DIAMETER::realm
+      DIAMETER::respond
+      DIAMETER::result
+      DIAMETER::session
+      discard
+      DNS::class
+      DNS::disable
+      DNS::edns0
+      DNS::enable
+      DNS::header
+      DNS::last_act
+      DNS::len
+      DNS::name
+      DNS::ptype
+      DNS::query
+      DNS::question
+      DNS::rdata
+      DNS::rr
+      DNS::tsig
+      domain
+      DOSL7::disable
+      DOSL7::enable
+      DOSL7::profile
+      drop
+      event
+      findclass
+      findstr
+      FIX::tag
+      FLOW::priority
+      FLOWTABLE::count
+      FLOWTABLE::limit
+      forward
+      getfield
+      htonl
+      htons
+      HSL::open
+      HSL::send
+      HTML::comment
+      HTML::disable
+      HTML::enable
+      HTML::tag
+      HTTP::class
+      HTTP::clear
+      HTTP::close
+      HTTP::collect
+      HTTP::cookie
+      HTTP::disable
+      HTTP::enable
+      HTTP::fallback
+      HTTP::header
+      HTTP::host
+      HTTP::is_keepalive
+      HTTP::is_redirect
+      HTTP::method
+      HTTP::passthrough_reason
+      HTTP::password
+      HTTP::path
+      HTTP::payload
+      HTTP::query
+      HTTP::redirect
+      HTTP::release
+      HTTP::request
+      HTTP::request_num
+      HTTP::respond
+      HTTP::retry
+      HTTP::status
+      HTTP::uri
+      HTTP::username
+      HTTP::version
+      http_cookie
+      http_header
+      http_host
+      http_method
+      http_uri
+      http_version
+      ICAP::header
+      ICAP::method
+      ICAP::status
+      ICAP::uri
+      ifile
+      imid
+      IP::addr
+      IP::client_addr
+      IP::hops
+      IP::idle_timeout
+      IP::local_addr
+      IP::protocol
+      IP::remote_addr
+      IP::server_addr
+      IP::stats
+      IP::tos
+      IP::ttl
+      IP::version
+      ip_protocol
+      ip_tos
+      ip_ttl
+      ISESSION::deduplication
+      ISTATS::remove
+      ISTATS::get
+      ISTATS::incr
+      ISTATS::set
+      LB::bias
+      LB::class
+      LB::command
+      LB::connect
+      LB::context_id
+      LB::detach
+      LB::down
+      LB::dst_tag
+      LB::mode
+      LB::persist
+      LB::prime
+      LB::queue
+      LB::reselect
+      LB::select
+      LB::server
+      LB::snat
+      LB::src_tag
+      LB::status
+      LB::up
+      LINE
+      LINE::get
+      LINE::set
+      LINK::lasthop
+      LINK::nexthop
+      LINK::qos
+      LINK::vlan_id
+      link_qos
+      listen
+      llookup
+      local_addr
+      log
+      matchclass
+      matches_glob
+      md5
+      members
+      NAME::lookup
+      NAME::response
+      nexthop
+      node
+      nodes
+      ntohl
+      ntohs
+      ONECONNECT::detach
+      ONECONNECT::label
+      ONECONNECT::reuse
+      ONECONNECT::select
+      peer
+      persist
+      pool
+      priority
+      PLUGIN::enable
+      PLUGIN::disable
+      PROFILE::auth
+      PROFILE::clientssl
+      PROFILE::exists
+      PROFILE::fasthttp
+      PROFILE::fastL4
+      PROFILE::ftp
+      PROFILE::http
+      PROFILE::httpclass
+      PROFILE::oneconnect
+      PROFILE::persist
+      PROFILE::serverssl
+      PROFILE::stream
+      PROFILE::tcp
+      PROFILE::udp
+      PROFILE::xml
+      RADIUS::avp
+      RADIUS::code
+      RADIUS::id
+      rateclass
+      recv
+      redirect
+      reject
+      relate_client
+      relate_server
+      remote_addr
+      RESOLV::lookup
+      REWRITE::disable
+      REWRITE::enable
+      REWRITE::payload
+      REWRITE::post_process
+      rmd160
+      ROUTE::age
+      ROUTE::bandwidth
+      ROUTE::domain
+      ROUTE::rtt
+      ROUTE::rttvar
+      RTSP::collect
+      RTSP::header
+      RTSP::method
+      RTSP::msg_source
+      RTSP::payload
+      RTSP::release
+      RTSP::respond
+      RTSP::status
+      RTSP::uri
+      RTSP::version
+      SCTP::client_port
+      SCTP::collect
+      SCTP::local_port
+      SCTP::mss
+      SCTP::payload
+      SCTP::ppi
+      SCTP::release
+      SCTP::remote_port
+      SCTP::respond
+      SCTP::server_port
+      SDP::field
+      SDP::media
+      SDP::session_id
+      send
+      server_addr
+      server_port
+      serverside
+      SESSION::data
+      session
+      sha1
+      sha256
+      sha384
+      sha512
+      sharedvar
+      SIP::call_id
+      SIP::discard
+      SIP::from
+      SIP::header
+      SIP::method
+      SIP::payload
+      SIP::respond
+      SIP::response
+      SIP::to
+      SIP::uri
+      SIP::via
+      SMTPS::disable
+      SMTPS::enable
+      snat
+      snatpool
+      SOCKS::allowed
+      SOCKS::destination
+      SOCKS::version
+      SSL::authenticate
+      SSL::cert
+      SSL::cipher
+      SSL::collect
+      SSL::disable
+      SSL::enable
+      SSL::extensions
+      SSL::forward_proxy
+      SSL::handshake
+      SSL::is_renegotiation_secure
+      SSL::mode
+      SSL::modssl_sessionid_headers
+      SSL::payload
+      SSL::profile
+      SSL::renegotiate
+      SSL::respond
+      SSL::secure_renegotiation
+      SSL::session
+      SSL::sessionid
+      SSL::sessionticket
+      SSL::unclean_shutdown
+      SSL::verify_result
+      static
+      STATS::get
+      STATS::incr
+      STATS::set
+      STATS::setmax
+      STATS::setmin
+      STREAM::disable
+      STREAM::enable
+      STREAM::encoding
+      STREAM::expression
+      STREAM::match
+      STREAM::max_matchsize
+      STREAM::replace
+      substr
+      table
+      tcl_platform
+      TCP::bandwidth
+      TCP::client_port
+      TCP::close
+      TCP::collect
+      TCP::local_port
+      TCP::mss
+      TCP::nagle
+      TCP::notify
+      TCP::offset
+      TCP::option
+      TCP::payload
+      TCP::release
+      TCP::remote_port
+      TCP::respond
+      TCP::rtt
+      TCP::server_port
+      TCP::unused_port
+      timing
+      TMM::cmp_cluster_primary
+      TMM::cmp_count
+      TMM::cmp_group
+      TMM::cmp_unit
+      traffic_group
+      translate
+      UDP::client_port
+      UDP::drop
+      UDP::local_port
+      UDP::mss
+      UDP::payload
+      UDP::remote_port
+      UDP::respond
+      UDP::server_port
+      UDP::unused_port
+      URI::basename
+      URI::compare
+      URI::decode
+      URI::encode
+      URI::host
+      URI::path
+      URI::port
+      URI::protocol
+      URI::query
+      use
+      virtual
+      vlan_id
+      WAM::disable
+      WAM::enable
+      WEBSSO::disable
+      WEBSSO::enable
+      WEBSSO::select
+      when
+      whereis
+      X509::cert_fields
+      X509::extensions
+      X509::hash
+      X509::issuer
+      X509::not_valid_after
+      X509::not_valid_before
+      X509::serial_number
+      X509::signature_algorithm
+      X509::subject
+      X509::subject_public_key
+      X509::subject_public_key_RSA_bits
+      X509::subject_public_key_type
+      X509::verify_cert_error_string
+      X509::version
+      X509::whole
+      XML::address
+      XML::collect
+      XML::element
+      XML::event
+      XML::eventid
+      XML::parse
+      XML::release
+      XML::soap
+      XML::subscribe
+      ACCESS_SESSION_STARTED
+      ACCESS_SESSION_CLOSED
+      ACCESS_ACL_ALLOWED
+      ACCESS_ACL_DENIED
+      ACCESS_POLICY_AGENT_EVENT
+      ACCESS_POLICY_COMPLETED
+      ADAPT_REQUEST_RESULT
+      ADAPT_RESPONSE_RESULT
+      ASM_REQUEST_BLOCKING
+      ASM_REQUEST_DONE
+      ASM_REQUEST_VIOLATION
+      ASM_RESPONSE_VIOLATION
+      AUTH_ERROR
+      AUTH_FAILURE
+      AUTH_RESULT
+      AUTH_SUCCESS
+      AUTH_WANTCREDENTIAL
+      CACHE_REQUEST
+      CACHE_RESPONSE
+      CACHE_UPDATE
+      CATEGORY_MATCHED
+      CLASSIFICATION_DETECTED
+      CLIENT_ACCEPTED
+      CLIENT_CLOSED
+      CLIENT_DATA
+      CLIENT_LINE
+      CLIENTSSL_CLIENTCERT
+      CLIENTSSL_CLIENTHELLO
+      CLIENTSSL_DATA
+      CLIENTSSL_HANDSHAKE
+      CLIENTSSL_SERVERHELLO_SEND
+      DIAMETER_INGRESS
+      DIAMETER_EGRESS
+      DNS_REQUEST
+      DNS_RESPONSE
+      FIX_MESSAGE
+      FLOW_INIT
+      HTML_COMMENT_MATCHED
+      HTML_TAG_MATCHED
+      HTTP_CLASS_FAILED
+      HTTP_CLASS_SELECTED
+      HTTP_DISABLED
+      HTTP_PROXY_REQUEST
+      HTTP_REQUEST
+      HTTP_REQUEST_DATA
+      HTTP_REQUEST_SEND
+      HTTP_RESPONSE
+      HTTP_RESPONSE_CONTINUE
+      HTTP_RESPONSE_DATA
+      HTTP_REQUEST_RELEASE
+      HTTP_RESPONSE_RELEASE
+      ICAP_REQUEST
+      ICAP_RESPONSE
+      IN_DOSL7_ATTACK
+      LB_FAILED
+      LB_QUEUED
+      LB_SELECTED
+      NAME_RESOLVED
+      PCP_REQUEST
+      PCP_RESPONSE
+      QOE_PARSE_DONE
+      REWRITE_REQUEST_DONE
+      REWRITE_RESPONSE_DONE
+      RTSP_REQUEST
+      RTSP_REQUEST_DATA
+      RTSP_RESPONSE
+      RTSP_RESPONSE_DATA
+      RULE_INIT
+      SERVER_CLOSED
+      SERVER_CONNECTED
+      SERVER_DATA
+      SERVER_LINE
+      SERVERSSL_CLIENTHELLO_SEND
+      SERVERSSL_DATA
+      SERVERSSL_HANDSHAKE
+      SERVERSSL_SERVERHELLO
+      SIP_REQUEST
+      SIP_REQUEST_SEND
+      SIP_RESPONSE
+      SIP_RESPONSE_SEND
+      SOCKS_REQUEST
+      STREAM_MATCHED
+      USER_REQUEST
+      USER_RESPONSE
+      XML_BEGIN_DOCUMENT
+      XML_BEGIN_ELEMENT
+      XML_CDATA
+      XML_CONTENT_BASED_ROUTING
+      XML_END_DOCUMENT
+      XML_END_ELEMENT
+      XML_EVENT
+    </keyword-class>
+    <keyword-class name="iRule-GTM-tokens">
+      active_members
+      client_port
+      cname
+      crc32
+      discard
+      DNS::rrname
+      DNS::rrtype
+      drop
+      findstr
+      forward
+      IP::addr
+      IP::client_addr
+      IP::hops
+      IP::idle_timeout
+      IP::intelligence
+      IP::local_addr
+      IP::protocol
+      IP::remote_addr
+      IP::server_addr
+      IP::stats
+      IP::tos
+      IP::ttl
+      IP::version
+      IP::reputation
+      host
+      LB::server
+      LB::status
+      LINK::lasthop
+      LINK::nexthop
+      LINK::qos
+      LINK::vlan_id
+      LSN::inbound-entry
+      LSN::address
+      LSN::disable
+      LSN::inbound
+      LSN::persistence
+      LSN::persistence-entry
+      LSN::pool
+      LSN::port
+      log
+      matchregion
+      members
+      NAME::lookup
+      NAME::response
+      nodes_up
+      noerror
+      NTLM::disable
+      NTLM::enable
+      ONECONNECT::detach
+      ONECONNECT::label
+      ONECONNECT::reuse
+      PCP::reject
+      PCP::request
+      PCP::response
+      PEM::disable
+      PEM::enable
+      PEM::flow
+      PEM::session
+      persist
+      POLICY::controls
+      POLICY::names
+      POLICY::rules
+      POLICY::targets
+      pool
+      pools
+      PROFILE::auth
+      PROFILE::clientssl
+      PROFILE::diameter
+      PROFILE::exists
+      PROFILE::fasthttp
+      PROFILE::fastL4
+      PROFILE::ftp
+      PROFILE::http
+      PROFILE::httpclass
+      PROFILE::oneconnect
+      PROFILE::persist
+      PROFILE::serverssl
+      PROFILE::stream
+      PROFILE::tcp
+      PROFILE::udp
+      PROFILE::xml
+      PROFILE::httpcompression
+      PROFILE::webacceleration
+      QOE::disable
+      QOE::enable
+      QOE::video
+      reject
+      server_port
+      substr
+      TCP::client_port
+      TCP::server_port
+      ttl
+      UDP::client_port
+      UDP::server_port
+      uptime
+      when
+      whereis
+      wherami
+      whoami
+      wideip
+      LB_SCORES
+      DNS_REQUEST
+      LB_FAILED
+      LB_SELECTED
+      RULE_INIT
+    </keyword-class>
+    <keyword-class name="tcl">
+      append array
+      beep binary break
+      case catch clock concat continue
+      dde default
+      echo else elseif encoding error eval expr
+      for foreach format
+      global
+      history
+      if incr info
+      join
+      lappend lindex linsert list llength load loadTk lrange lreplace lsearch lset lsort
+      msgcat
+      Platform-specific puts
+      re_syntax  read regexp registry regsub resource return
+      scan set split string subst switch
+      tclLog tclMacPkgSearch tclPkgSetup tclPkgUnknown trace
+      unset
+      variable
+      while
+    </keyword-class>
+    <keyword-class name="tcl-notsupported">
+      after auto_execok auto_import auto_load auto_load_index
+      auto_mkindex auto_mkindex_old auto_qualify auto_reset
+      bgerror
+      cd close
+      eof exec exit
+      fblocked fconfigure fcopy file fileevent filename flush
+      gets glob
+      http
+      interp
+      load
+      memory
+      namespace
+      open
+      package pid pkg::create pkg_mkIndex proc pwd
+      rename
+      seek socket source
+      tcl_findLibrary tell time
+      unknown update uplevel upvar
+      vwait
+    </keyword-class>
+  </keyword-classes>
+  <languages>
+
+    <language name="iRule">
+      <lexer name="tcl" key="25" />
+      <file-extensions>tcl</file-extensions>
+      <use-keywords>
+        <keyword key="0" class="iRule-LTM-tokens" />
+        <keyword key="1" class="iRule-GTM-tokens" />
+        <keyword key="2" class="tcl" />
+        <keyword key="3" class="tcl-notsupported" />
+      </use-keywords>
+      <use-styles>
+        <style name="DEFAULT" key="0" back="white" fore="Black" font="Consolas" size="10" />
+        <style name="COMMENT" key="1" back="white" fore="0x007F00" font="Consolas" size="10" italics="true" />
+        <style name="COMMENTLINE" key="2" back="white" fore="0x007F00" font="Consolas" size="10" italics="true" />
+        <style name="NUMBER" key="3" back="white" fore="DarkViolet" font="Consolas" size="10" />
+        <!-- quote -->
+        <style name="WORDINQUOTE" key="4" back="white" fore="0x00007F" font="Consolas" size="10" bold="false" italics="true" />
+        <style name="INQUOTE" key="5" back="white" fore="0x7F007F" font="Consolas" size="10" italics="true" />
+        <style name="OPERATOR" key="6" back="white" fore="0xF000FF" font="Consolas" size="10" bold="true" />
+        <style name="IDENTIFIER" key="7" back="white" fore="Black" font="Consolas" size="10" />
+        <!-- variable -->
+        <style name="SUBSTITUTION" key="8" back="0xF0F0FF" fore="0x00007F" font="Consolas" size="10" />
+        <style name="SUBBRACE" key="9" back="white" fore="0x00007F" font="Consolas" size="10" />
+        <style name="MODIFIER" key="10" back="white" fore="Blue" font="Consolas" size="10" />
+        <style name="EXPAND" key="11" back="0xFFFF80" fore="Black" font="Consolas" size="10" bold="false" />
+        <!-- iRule-commands -->
+        <style name="KEYWORD" key="12" back="0xF0F0F0" fore="Navy" font="Consolas" size="10" bold="true" />
+        <!-- iRule-events -->
+        <style name="KEYWORD2" key="13" back="0xF0F0F0" fore="0x00007F" font="Consolas" size="10" bold="true" />
+        <!-- tcl -->
+        <style name="KEYWORD3" key="14" back="white" fore="0x00007F" font="Consolas" size="10" bold="true" />
+        <!-- tcl-notsupported -->
+        <style name="KEYWORD4" key="15" back="Red" fore="white" font="Consolas" size="10" bold="true" italic="true" />
+        <style name="KEYWORD5" key="16" back="white" fore="Yellow" font="Consolas" size="10" bold="true" />
+        <style name="KEYWORD6" key="17" back="white" fore="Yellow" font="Consolas" size="10" bold="true" />
+        <style name="KEYWORD7" key="18" back="white" fore="Yellow" font="Consolas" size="10" bold="true" />
+        <style name="KEYWORD8" key="19" back="white" fore="Yellow" font="Consolas" size="10" />
+        <style name="DOCUMENT_DEFAULT" key="32" back="white" fore="Black" font="Consolas" size="10" />
+        <style name="STYLE_LINENUMBER" key="33" back="0xF0F0F0" fore="Black" font="Consolas" size="10" />
+        <style name="MATCHEDOPERATOR1" key="34" back="0xF0F0F0" fore="Yellow" font="Consolas" size="10" bold="true" />
+        <style name="MATCHEDOPERATOR2" key="35" back="0xFF00FF" fore="Yellow" font="Consolas" size="10" />
+      </use-styles>
+    </language>
+    <language name="iRule-old">
+      <lexer name="c++" key="3" />
+      <file-extensions>tcl</file-extensions>
+      <use-keywords>
+        <keyword key="0" class="iRule" />
+      </use-keywords>
+      <use-styles>
+        <style name="DEFAULT" key="0" back="white" fore="black" font="Consolas" size="10" />
+        <style name="COMMENT" key="1" back="white" fore="DarkOliveGreen" font="Consolas" size="10" />
+        <style name="COMMENTLINE" key="2" back="white" fore="Red" italics="true" font="Consolas" size="10" />
+        <style name="COMMENTDOC" key="3" back="white" fore="DarkOliveGreen" font="Consolas" size="10" />
+        <style name="NUMBER" key="4" back="white" fore="DarkViolet" font="Consolas" size="10" />
+        <style name="KEYWORD" key="5" back="white" fore="DarkBlue" bold="true" font="Consolas" size="10" />
+        <style name="STRING" key="6" back="white" fore="Maroon" bold="true" font="Consolas" size="10" />
+        <style name="CHARACTER" key="7" back="white" fore="black" font="Consolas" size="10" />
+        <style name="UUID" key="8" back="white" fore="DarkGreen" font="Consolas" size="10" />
+        <style name="PREPROCESSOR" key="9" back="white" fore="megenta" font="Consolas" size="10" />
+        <style name="OPERATOR" key="10" back="white" fore="Olive" font="Consolas" size="10" />
+        <style name="IDENTIFIER" key="11" back="white" fore="black" font="Consolas" size="10" />
+        <style name="STRINGEOL" key="12" back="white" fore="black" font="Consolas" size="10" />
+        <style name="VERBATIM" key="13" back="white" fore="black" font="Consolas" size="10" />
+        <style name="REGEX" key="14" back="white" fore="purple" font="Consolas" size="10" />
+        <style name="COMMENTLINEDOC" key="15" back="white" fore="black" font="Consolas" size="10" />
+        <style name="WORD2" key="16" back="white" fore="black" font="Consolas" size="10" />
+        <style name="COMMENTDOCKEYWORD" key="17" back="white" fore="black" font="Consolas" size="10" />
+        <style name="COMMENTDOCKEYWORDERROR" key="18" back="white" fore="black" font="Consolas" size="10" />
+        <style name="STYLE_LINENUMBER" key="33" back="white" fore="black" font="Consolas" size="10" />
+        <style name="DOCUMENT_DEFAULT" key="32" back="white" fore="black" font="Consolas" size="10" />
+      </use-styles>
+    </language>
+  </languages>
+</Scintilla>

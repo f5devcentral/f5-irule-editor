@@ -1,0 +1,26 @@
+when RULE_INIT {
+  array set ::active_clients { }
+}
+
+when CLIENT_ACCEPTED {
+  set client_ip [IP::remote_addr]
+  if { [info exists ::active_clients($client_ip)] } {
+    if {$::active_clients($client_ip) > 5 } {
+      reject
+      return
+    } else {
+      incr ::active_clients($client_ip)
+    }
+  } else {
+    set ::active_clients($client_ip) 1
+  }
+}
+
+when CLIENT_CLOSED {
+  if { [info exists ::active_clients($client_ip)] } {
+    incr ::active_clients($client_ip) -1
+    if { $::active_clients($client_ip) <= 0 } {
+      unset ::active_clients($client_ip)
+    }
+  }
+}

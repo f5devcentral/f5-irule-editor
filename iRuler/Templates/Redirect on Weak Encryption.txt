@@ -1,0 +1,8 @@
+when HTTP_REQUEST {
+  # check for at least 128 bits of encryption
+  if { [SSL::cipher bits] < 128 }{
+    # when browser cannot do at least 128 bits of encryption redirect
+    # to a un-encrypted page with an informational error
+    HTTP::redirect http://10.10.10.10/error/sslerr.html
+  }
+}

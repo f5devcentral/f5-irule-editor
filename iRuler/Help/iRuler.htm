@@ -1,0 +1,827 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>F5 iRule Editor Help - Version 0.11.0.1</title>
+        <style type="text/css"">
+            BODY { FONT-family: Tahoma,verdana,sans-serif; background-color: white; font-size: 12px;}
+            .Product.Description{font: x-small arial,sans-serif; color:#333;}
+            .Product TH { width:700; background-color: gray; FONT-WEIGHT: BOLD; COLOR: #ffffff; }
+            .Quote { margin-top: 15; margin-bottom: 15; FONT: x-small verdana,sans-serif; font-style: italic; text-align: center; }
+            .Packed { FONT: x-small Arial Narrow,sans-serif }
+            .Code { FONT: x-small Arial Narrow,arial; }
+            TD { font-family: Tahome,verdana,sans-serif; font-size: 10px;}
+            TH { font-family: Tahoma,verdana,sans-serif; font-size: 10px; font-weight: bold;}
+            H1 { COLOR: #4682b4; font-size: 20px; }
+            H2 { FONT-family: Tahoma,verdana,sans-serif; COLOR: #708090; font-size: 18px;}
+            H3 { COLOR: #4169e1; margin-bottom: 5; font-size: 12px; }
+            H4 { COLOR: #778899; margin-bottom: 0; }
+            IMG { BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none }
+            A { FONT-family: Tahoma,verdana,sans-serif; COLOR: #4169e1; TEXT-DECORATION: none }
+            A:hover { FONT-FAMILY: Tahoma,verdana,sans-serif; TEXT-DECORATION: underline }
+            A:active { FONT-family: Tahoma,verdana,sans-serif; COLOR: #4169e1; TEXT-DECORATION: none }
+            A:link { FONT-family: Tahoma,verdana,sans-serif; COLOR: #4169e1 }
+            A:visited { FONT-family: Tahoma,verdana,sans-serif; COLOR: #228b22 }
+         </style>
+	</head>
+	<body>
+        <a id="Top"></a>
+	    <h1>F5 iRule Editor Help - Version 0.11.0.1</h1>
+	    <p>
+	        The F5 iRule Editor is a windows editor for the iRule language.
+	    </p>
+	    <hr />
+	    
+
+        <!-- ------------------- -->
+	    <!-- Contents            -->
+        <!-- ------------------- -->
+
+        <a id="Contents"></a>
+	    <h2>Contents</h2>
+        <ul>
+            <li><a href="#Introduction">Introduction</a></li>
+            <li><a href="#Main Window">Main Window</a>
+                <ul>
+                    <li><a href="#ConnectionDialog">Connection Dialog</a></li>
+                    <li><a href="#NewiRuleDialog">New iRule Dialog</a></li>
+                    <li><a href="#PropertiesDialog">Properties Dialog</a></li>
+                    <li><a href="#DataGroupsDialog">Data Groups Dialog</a></li>
+                    <li><a href="#DataGroupDialog">Data Group Dialog</a></li>
+                    <li><a href="#ShareDialog">Share Dialog</a></li>
+                </ul>
+            </li>
+            <li><a href="#WhatsNew">What's New</a></li>
+            <li><a href="#Disclaimers">Disclaimers</a></li>
+        </ul>
+	    <hr />
+
+
+        <!-- ------------------- -->
+	    <!-- Introduction        -->
+        <!-- ------------------- -->
+
+        <a id="Introduction"></a>
+	    <h2>Introduction</h2>
+	    <blockquote>
+	    <p>
+	        The F5 iRule Editor is a windows graphical editor for iRules on your BIG-IP.  It makes use of F5's iControl interfaces to
+	        remotely manage iRules and their deployment on Virtual Servers.  The main goal here was to show the power of what
+	        you can do with iControl in a very short amount of time.
+	    </p>
+	    <h3>History</h3>
+	    <p>
+	        I've been keeping my eye out for a good lexical editor control for a long time and there are plenty on the market but
+	        it's been hard to find one with built-in TCL support.  I've been a big fan of the <a href="http://www.scintilla.org">Scintilla Control</a>
+	        ever since I switched to <a href="http://www.flos-freeware.ch/notepad2.html">Notepad2</a> for my Notepad.exe replacement.  I downloaded the latest
+	        sources and what do you know, someone has contributed a TCL parser to the codebase.
+	    </p>
+	    <p>
+	        Now, I didn't have any excuse not to give a few hours to this pet project of mine to see where it would take me.  I spent the most part
+	        of the first day digging into the scintilla control and it's exposed API set to find out the extent of what it could do.  Day 2 was spent
+	        on building in the main application logic.  And by Day 3 I had a working build of what you see on the main window.
+	    </p>
+	    
+	    <p>
+	        Nothing beats syntax highlighting and auto-complete, but a few things stuck out as missing.  An editor is great for creating, editing,
+	        and saving iRules, but what about deployment?  So, I spent one more day on building an iRule property page that includes the logic
+	        to deploy the iRules to virtual servers as well as displaying their statistics.  The final missing piece was the GUI to create and manage
+	        Data Groups.  These are lists of strings, integers, or addresses that can be used in conjuction with our 
+	        <a href="http://devcentral.f5.com/wiki/default.aspx/iRules.findclass">findclass</a> and <a href="http://devcentral.f5.com/wiki/default.aspx/iRules.findclass">matchclass</a>
+	        methods.  Another few hours over the weekend got the final piece in place.
+	    </p>
+	    
+	    <h3>A bit about the Application</h3>
+	    <p>
+	        Now, that I've got the history out of the way, here's a bit of info on the application and methodology behind it.
+	        The majority of the iRule Editor's features are only valid with a partnership with a BIG-IP v9.x system.  While you
+	        can make use of the syntax highlighting and hotspots without a valid connection, you won't be able to check the syntax
+	        or save them.
+	    </p>
+
+        <p>
+            Enjoy!
+        </p>	    
+	    
+	    </blockquote>
+	    <hr />
+	    
+        <!-- ------------------- -->
+	    <!-- Menu Commands       -->
+        <!-- ------------------- -->
+
+        <a id="MainWindow"></a>
+	    <h2>Main Window</h2>
+        <h3>Menu Commands</h3>
+  	    <blockquote>
+	        <table border="0" width="100%">
+	        
+	        <!-- File Menu -->
+
+	        <tr><td colspan="3"><h3>File Menu</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Connect/Disconnect</th><td valign="top">:</td>
+	            <td>Establish a relationship with a BIG-IP.  A connection must be established before you can
+	            perform any commands.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Partition</th><td valign="top">:</td>
+	            <td>Get/Set the currently active Administrative Configuration Partition.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">New</th><td valign="top">:</td>
+	            <td>Create a new iRule with the Template wizard.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Save</th><td valign="top">:</td>
+	            <td>Save the current iRule to the BIG-IP.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Delete</th><td valign="top">:</td>
+	            <td>Delete the current iRule from the BIG-IP.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Archive.Export</th><td valign="top">:</td>
+	            <td>Export the iRules to your local computer.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Archive.Import</th><td valign="top">:</td>
+	            <td>Import the iRules from your local archive folder.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Archive.Open Archive Folder</th><td valign="top">:</td>
+	            <td>Open the local archive folder for viewing.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Exit</th><td valign="top">:</td>
+	            <td>Exit the application</td>
+	        </tr>
+
+	        <!-- Edit Menu -->
+
+	        <tr><td colspan="3"><h3>Edit Menu</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Undo</th><td valign="top">:</td>
+	            <td>Undo last text editing action.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Redo</th><td valign="top">:</td>
+	            <td>Redo last Undo action.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Cut</th><td valign="top">:</td>
+	            <td>Remove the selected text and place it in the clipboard.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Copy</th><td valign="top">:</td>
+	            <td>Copy the selected text to the clipboard.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Paste</th><td valign="top">:</td>
+	            <td>Paste the contents of the clipboard into the selection.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Delete</th><td valign="top">:</td>
+	            <td>Remove the selected text.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Select All</th><td valign="top">:</td>
+	            <td>Select the entire text contents.</td>
+	        </tr>
+
+	        <!-- Search Menu -->
+
+	        <tr><td colspan="3"><h3>Edit Menu</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Find</th><td valign="top">:</td>
+	            <td>Open the Find dialog.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Find Next</th><td valign="top">:</td>
+	            <td>Find the next match specified in the Find dialog.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Find Previous</th><td valign="top">:</td>
+	            <td>Find the previous match specified in the Find dialog.</td>
+	        </tr>
+
+	        <!-- View Menu -->
+
+	        <tr><td colspan="3"><h3>View Menu</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Line Numbers</th><td valign="top">:</td>
+	            <td>Show or Hide the line numbers margin in the text editor.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Indention Guides</th><td valign="top">:</td>
+	            <td>Show or hide the visual guides for where indentions (tabs) are placed.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Margin</th><td valign="top">:</td>
+	            <td>Show or hide the left margin spacer in the text editor.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Fold Margin</th><td valign="top">:</td>
+	            <td>Show or hide the folding margin in the text editor.  This area allows collapsing of sections of code.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Word Wrap</th><td valign="top">:</td>
+	            <td>Enable or disable the end of line word wrapping in the text editor.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Whitespace</th><td valign="top">:</td>
+	            <td>Show or hide the visual guides for spaces and tabs in the text editor.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">End of Line</th><td valign="top">:</td>
+	            <td>View the end of line markers</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Bookmarks</th><td valign="top">:</td>
+	            <td>Clear the bookmarks from a syntax check operation.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Change Indention Settings</th><td valign="top">:</td>
+	            <td>Control tab and indention settings.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Auto Complete</th><td valign="top">:</td>
+	            <td>Enable or disable the Auto Completion of event declarations.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Hotspots</th><td valign="top">:</td>
+	            <td>Enable or disable clickable keyword hotspots.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Status</th><td valign="top">:</td>
+	            <td>Show or hide the status panel.</td>
+	        </tr>
+
+	        <!-- Tools Menu -->
+
+	        <tr><td colspan="3"><h3>Tools Menu</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Data Group Editor</th><td valign="top">:</td>
+	            <td>Launch the Data Group Editor Dialog to allow you to create and modify Data Groups.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Share your iRule</th><td valign="top">:</td>
+	            <td>Why not take some credit for your great work.  By sharing your iRule, you will 
+	                be contributing to the F5 DevCentral user community.  Great Karma awaits...</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Generate Traffic</th><td valign="top">:</td>
+	            <td>Open the traffic generation dialog to allow you to send HTTP traffic to your virtual servers.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Check for Updates</th><td valign="top">:</td>
+	            <td>Contact DevCentral.f5.com for template updates.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Config.Reload Config</th><td valign="top">:</td>
+	            <td>Reload the lexer configuration file.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Config.Reset Config</th><td valign="top">:</td>
+	            <td>Reset the lexer configuration file.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Config.Edit Config</th><td valign="top">:</td>
+	            <td>Edit the lexer configuration file.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">BIG-IP Config.Save Configuration</th><td valign="top">:</td>
+	            <td>Save the BIG-IP's running configuration to disk.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">BIG-IP Config.Auto Save</th><td valign="top">:</td>
+	            <td>Control whether saving objects will auto save to the BIG-IP disk.</td>
+	        </tr>
+
+	        <!-- Help Menu -->
+
+	        <tr><td colspan="3"><h3>Help Menu</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">F5 iRule Editor Help</th><td valign="top">:</td>
+	            <td>Open a web browser to this page!</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">DevCentral.f5.com</th><td valign="top">:</td>
+	            <td>Open a web browser to the DevCentral Home Page.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">DevCentral Forums</th><td valign="top">:</td>
+	            <td>Open a web browser to the DevCentral Support Forums.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">iRule Reference</th><td valign="top">:</td>
+	            <td>Open a web browser to the iRule Documentation on DevCentral.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">TCL Reference</th><td valign="top">:</td>
+	            <td>Open a web browser to the TCL Reference Manual.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Tip Of The Day</th><td valign="top">:</td>
+	            <td>Show some useful tips on using the iRule Editor.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">About F5 iRule Editor</th><td valign="top">:</td>
+	            <td>Show the About box.</td>
+	        </tr>
+	        </table>
+	    </blockquote>
+
+        <br />
+        <h3>iRule Panel</h3>
+  	    <blockquote>
+	        <table border="0" width="100%">
+	        <tr>
+	            <th valign="top" width="20%" align="right">Properties</th><td valign="top">:</td>
+	            <td>Launch the <a href="#PropertiesDialog">Properties Dialog</a> for the given iRule.</td>
+	        </tr>
+	    	</table>
+	    </blockquote>
+
+   	    <hr />
+
+
+        <!-- ------------------- -->
+	    <!-- Connection Dialog   -->
+        <!-- ------------------- -->
+
+        <a id="ConnectionDialog"></a>
+	    <h2>Connection Dialog</h2>
+	    <blockquote>
+	        <table border="0" width="100%">
+	        <tr><td colspan="3"><h3>Fields</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Hostname</th><td valign="top">:</td>
+	            <td>The IP address or DNS hostname of the target BIG-IP.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Port</th><td valign="top">:</td>
+	            <td>The management port on the BIG-IP.  This will always be 443.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Endpoint</th><td valign="top">:</td>
+	            <td>The iControl endpoint on the BIG-IP.  This will always be /iControl/iControlPortal.cgi</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Username</th><td valign="top">:</td>
+	            <td>The BIG-IP username.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Password</th><td valign="top">:</td>
+	            <td>The BIG-IP password</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Proxy Hostname</th><td valign="top">:</td>
+	            <td>If you are connecting to your BIG-IP through a HTTP proxy, this is the hostname of that proxy.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Proxy Port</th><td valign="top">:</td>
+	            <td>The port you are connecting to on your optional proxy server.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Proxy Username</th><td valign="top">:</td>
+	            <td>The optional proxy server username.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Proxy Password</th><td valign="top">:</td>
+	            <td>The optional proxy server password</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h3>Buttons</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">OK</th><td valign="top">:</td>
+	            <td>Attempt to establish a connection to the given BIG-IP with the supplied parameters.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Cancel</th><td valign="top">:</td>
+	            <td>Cancel the connection process.</td>
+	        </tr>
+
+	        </table>
+	    
+	    </blockquote>
+	    <hr />
+
+        <!-- ------------------- -->
+	    <!-- New iRule Dialog   -->
+        <!-- ------------------- -->
+
+        <a id="NewiRuleDialog"></a>
+	    <h2>New iRule Dialog</h2>
+	    <blockquote>
+	        <table border="0" width="100%">
+	        <tr><td colspan="3"><h3>Fields</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Name</th><td valign="top">:</td>
+	            <td>Enter the name for your iRule.</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h3>Tabs</h3></td></tr>
+	        <tr><td colspan="3"><h4>Templates</h4></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Available Templates</th><td valign="top">:</td>
+	            <td>This list contains user contributed sample templates to help get you started.</td>
+	        </tr>
+	        <tr><td colspan="3"><h4>Custom</h4></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Available Events</th><td valign="top">:</td>
+	            <td>This list consists of all iRule events.  Keep in mind that certain events require specific
+	                profiles to be associated with the virtual before you can assign it.</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h3>Buttons</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">OK</th><td valign="top">:</td>
+	            <td>Attempt to establish a connection to the given BIG-IP with the supplied parameters.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Cancel</th><td valign="top">:</td>
+	            <td>Cancel the connection process.</td>
+	        </tr>
+
+	        </table>
+	    </blockquote>
+	    <hr />
+
+        <!-- ------------------- -->
+	    <!-- Properties Dialog   -->
+        <!-- ------------------- -->
+
+        <a id="PropertiesDialog"></a>
+	    <h2>Properties Dialog</h2>
+	    <blockquote>
+	        <table border="0" width="100%">
+
+	        <tr><td colspan="3"><h3>Tabs</h3></td></tr>
+	        <tr><td colspan="3"><h4>Membership</h4></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Virtual Servers</th><td valign="top">:</td>
+	            <td>You can use this section to see a list of virtual servers using and not using this rule.
+	                Use the buttons to switch Virtual Servers use of the given iRule.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Pools</th><td valign="top">:</td>
+	            <td>This list box will contain references to pools from within the give iRule.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Refresh</th><td valign="top">:</td>
+	            <td>Refresh the dialog with information from the BIG-IP.</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h4>Statistics</h4></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Statistics List</th><td valign="top">:</td>
+	            <td>This list will show all events that the iRule contains as well as performance metrics for each event.
+	                If you include the "timing on" command you will be able to see CPU cycle statistics as well.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Refresh</th><td valign="top">:</td>
+	            <td>Refresh the statistics with information from the BIG-IP from the BIG-IP.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Reset Statistics</th><td valign="top">:</td>
+	            <td>This will perform a reset of all statistics for this iRule.  All statistics will be set back to zero.</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h3>Buttons</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">OK</th><td valign="top">:</td>
+	            <td>Attempt to establish a connection to the given BIG-IP with the supplied parameters.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Cancel</th><td valign="top">:</td>
+	            <td>Cancel the connection process.</td>
+	        </tr>
+
+	        </table>
+	    </blockquote>
+	    <hr />
+
+        <!-- ------------------- -->
+	    <!-- Data Groups Dialog   -->
+        <!-- ------------------- -->
+
+        <a id="DataGroupsDialog"></a>
+	    <h2>Data Groups Dialog</h2>
+	    <blockquote>
+	        <table border="0" width="100%">
+	        <tr><td colspan="3"><h3>List Boxes</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Address</th><td valign="top">:</td>
+	            <td>This list contains a list the address Data Groups on the BIG-IP.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Integer</th><td valign="top">:</td>
+	            <td>This list contains a list of the integer (value) Data Groups on the BIG-IP.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">String</th><td valign="top">:</td>
+	            <td>This list contains a list of the string Data Groups on the BIG-IP.</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h3>Buttons</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Add</th><td valign="top">:</td>
+	            <td>This will launch the Data Group Dialog to create a new Data Group of the specified type.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Edit</th><td valign="top">:</td>
+	            <td>This will launch the Data Group Dialog to edit the existing Data Group of the specified type.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Delete</th><td valign="top">:</td>
+	            <td>This will delete the specified Data Group from the BIG-IP.  Beware - this is not reversible!</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Refresh</th><td valign="top">:</td>
+	            <td>Refresh the Data Group lists from the BIG-IP.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">OK</th><td valign="top">:</td>
+	            <td>Attempt to establish a connection to the given BIG-IP with the supplied parameters.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Cancel</th><td valign="top">:</td>
+	            <td>Cancel the connection process.</td>
+	        </tr>
+
+	        </table>
+	    </blockquote>
+	    <hr />
+
+        <!-- ------------------- -->
+	    <!-- Data Group Dialog   -->
+        <!-- ------------------- -->
+
+        <a id="DataGroupDialog"></a>
+	    <h2>Data Group Dialog</h2>
+	    <blockquote>
+	        <table border="0" width="100%">
+	        <tr><td colspan="3"><h3>Fields</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Name</th><td valign="top">:</td>
+	            <td>The name of the Data Group.  This field is read-only in edit mode.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Value</th><td valign="top">:</td>
+	            <td>Depending on the type of Data Group, this will either be a address/netmask, integer, or string field.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Data Group Members</th><td valign="top">:</td>
+	            <td>This list contains the current members of the given Data Group.</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h3>Buttons</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Add</th><td valign="top">:</td>
+	            <td>This will add the current value into the Data Group Members list box.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Edit</th><td valign="top">:</td>
+	            <td>This will remove the selected value from the Data Group Members list box and place it in the value edit field.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Delete</th><td valign="top">:</td>
+	            <td>This will remove the selected value from the Data Group Members list box.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Create/Update</th><td valign="top">:</td>
+	            <td>This button will either create the new Data Group or update the changes made to an existing one.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Cancel</th><td valign="top">:</td>
+	            <td>Cancel the connection process.</td>
+	        </tr>
+
+	        </table>
+	    </blockquote>
+	    <hr />
+
+        <!-- ------------------- -->
+	    <!-- Share Dialog        -->
+        <!-- ------------------- -->
+
+        <a id="ShareDialog"></a>
+	    <h2>Share Dialog</h2>
+	    <blockquote>
+	        <table border="0" width="100%">
+	        <tr><td colspan="3"><h3>Fields</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">iRule Name</th><td valign="top">:</td>
+	            <td>This is the name for your iRule.  Make it something descriptive.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Author Name</th><td valign="top">:</td>
+	            <td>Give yourself some credit for your awesome work!</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Description</th><td valign="top">:</td>
+	            <td>A brief summary of what your iRule does.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">iRule</th><td valign="top">:</td>
+	            <td>The contents of the iRule for submission.  This field is read-only.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">I Accept the Terms and Conditions</th><td valign="top">:</td>
+	            <td>To help protect everyone, please accept the terms and conditions for sharing your iRule.</td>
+	        </tr>
+
+	        <tr><td colspan="3"><h3>Buttons</h3></td></tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Share</th><td valign="top">:</td>
+	            <td>This button will submit your iRule to DevCentral to share with the other DevCentral users.</td>
+	        </tr>
+	        <tr>
+	            <th valign="top" width="20%" align="right">Cancel</th><td valign="top">:</td>
+	            <td>Exit the Share Dialog without sharing your iRule.</td>
+	        </tr>
+
+	        </table>
+	    </blockquote>
+	    <hr />
+
+        <!-- ------------------- -->
+	    <!-- What's New          -->
+        <!-- ------------------- -->
+
+        <a id="WhatsNew"></a>
+	    <h2>What's New</h2>
+	    <blockquote>
+	        <h3>0.11.0.1 - 2011/10/19</h3>
+	            <ul>
+                    <li>ENH: Updated to the v11.0.0.1 iControl.dll</li>
+                    <li>ENH: Support for Manager Role administration.</li>
+                    <li>ENH: Support for v10+ format name/value pair data groups.</li>
+                    <li>ENH: Support for iRule description metadata.</li>
+                    <li>ENH: Data Groups dialog now supports resizing.</li>
+                    <li>ENH: Support for "[All]" partition for admins.</li>
+                    <li>ENH: Partition auto-selection based on permissions.</li>d
+                    <li>FIX: Export/Import support for v11 folder formats.</li>
+                    <li>FIX: Fixed applying iRules with like priorities.</li>
+                    <li>FIX: Fixed authoriziation on partition selection.</li>
+	            </ul>
+	        <h3>0.10.1.0 - 2010/01/11</h3>
+	            <ul>
+	                <li>ENH: System level config editing (bigip.conf and bigip_base.conf).</li>
+	                <li>ENH: Offline Editing now supported with the Offline tree node.</li>
+	                <li>ENH: Autologin with the /h (host), /u (user), and /p (pass) command line arguments.</li>
+	                <li>FIX: Data Groups dialog scroll bar support for long data group items.</li>
+	            </ul>
+			<h3>0.10.0.0 - 2009/08/03</h3>
+				<ul>
+					<li>FIX: Clicking on hyperlinks would crash on some windows systems.</li>
+					<li>ENH: irule property VS assignment not saved to BIG-IP disk with OK click.</li>
+					<li>FIX: Auto-save flag to disable auto-config saving of configuration for non-priviledged users.</li>
+					<li>ENH: New "BIG-IP Config" tool menu to control auto-save flag and issue manual config saves.</li>
+					<li>ENH: HTTP Proxy support for iControl connections through a proxy server.</li>
+					<li>ENH: New transparent iRulerUpdater.exe process to manage software updates.</li>
+					<li>ENH: New GTM tokens added to iRuler.xml lexer configuration file.</li>
+				</ul>
+			<h3>0.9.1.5 - 2007/11/15</h3>
+				<ul>
+					<li>FIX: Fixed the File.Archive.Open Archive Folder command.</li>
+				</ul>
+	        <h3>0.9.1.4 - 2007/11/12</h3>
+	            <ul>
+	                <li>ENH: Add support for iRules names starting with underscores.</li>
+	                <li>ENH: Add Enhanced CPU Statistics Reporting.</li>
+	                <li>FIX: Corrected SIP events.</li>
+	            </ul>
+	        <h3>0.9.1.3 - 2007/09/05</h3>
+	            <ul>
+	                <li>ENH: Auto Indenting/Indention Settings</li>
+	            </ul>
+	        <h3>0.9.1.2 - 2007/08/31</h3>
+	            <ul>
+	                <li>ENH: Support for Administrative Partitions.</li>
+	                <li>FIX: Disable creation of duplication named iRules.</li>
+	                <li>FIX: Added character validation in the iRule Name.</li>
+	                <li>FIX: Fixed String Data Group's support of slash characters.</li>
+	                <li>FIX: Add Horizontal Scrollbars to iRule Property dialog listboxes.</li>
+	            </ul>
+	        <h3>0.9.0.23 - 2006/12/07</h3>
+	            <ul>
+	            <li>Fixed issue with editor not being visible after shutting down when minimized.</li>
+	            <li>Long awaited GTM support.</li>
+	            <li>Regenerated ClickOnce certificate to hopefully avoid install issues on certain machines.</li>
+	            </ul>
+            <h3>0.9.0.22 - 2006/07/27</h3>
+            <blockquote>
+                <ul>
+                <li>Rules are now correctly sorted in list.</li>
+                <li>Added new Local Traffic node to rules in preparation for GTM support.</li>
+                <li>Added History to connection dialog.</li>
+                <li>Fixed syntax errors on wrong rule when save all selected.</li>
+                <li>Fixed minPanelSize exception.</li>
+                <li>Added HTTP Header support for the Data Generation utility.</li>
+                <li>Fixed save_configuration() error for v9.1.2 systems.</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.20 - 2006/06/14</h3>
+            <blockquote>
+                <ul>
+                <li>Cleared status window on successful save operation.</li>
+                <li>Fixed GET requests in the Traffic Generation Dialog.</li>
+                <li>Added support to disable splash screen (ShowSplashScreen reg key).</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.18 - 2006/06/07</h3>
+            <blockquote>
+                <ul>
+                <li>Fixed launched browsers to use default browser.</li>
+                <li>Updated to latest scintilla sources to fix string allocation error..</li>
+                <li>Optimized modification handling to increase performance.</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.14 - 2006/05/16</h3>
+            <blockquote>
+                <ul>
+                <li>Randomized tips of the day.</li>
+                <li>Added CIDR shortcut format support to the Address Data Group Dialog.</li>
+                <li>Fixed crash when modifying an existing Address Data Group.</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.12 - 2006/05/09</h3>
+            <blockquote>
+                <ul>
+                <li>Added Search/Find commands.</li>
+                <li>Added Tools.Reset config menu item to reset the color highlighting configuration.</li>
+                <li>Implemented Import functionality.</li>
+                <li>Fixed buffer allocation error when refreshing list.</li>
+                <li>Fixed Save All overwrite of all iRules with contents of text window.</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.7 - 2006/05/08</h3>
+            <blockquote>
+                <ul>
+                <li>Added Export functionality.</li>
+                <li>You can now drag and drop your iRules.</li>
+                <li>Created mini toolbar for the iRules pane.</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.6 - 2006/05/04</h3>
+            <blockquote>
+                <ul>
+                <li>Added "Share" functionality.</li>
+                <li>After configuration updates, saved configuration to bigip.conf.</li>
+                <li>Added bookmarks for syntax checks.</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.5 - 2006/05/03</h3>
+            <blockquote>
+                <ul>
+                <li>Added Splash Screen.</li>
+                <li>Removed link panel and replaced it with a toolbar.</li>
+                <li>Implemented auto-complete for all keywords.</li>
+                <li>Fixed Auto-Complete.</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.3 - 2006/05/01</h3>
+            <blockquote>
+                <ul>
+                <li>Added Data Group Management</li>
+                <li>Changed the startup template auto-upate procedure to only contact DevCentral once per day.</li>
+                <li>Added iRule Properties Virtual Server Management</li>
+                </ul>
+            </blockquote>
+            <h3>0.9.0.0 - 2006/04/24</h3>
+            <blockquote>
+                <ul>
+                <li>Initial Beta Release</li>
+                </ul>
+            </blockquote>
+	    </blockquote>
+	    <hr />
+
+        <!-- ------------------- -->
+	    <!-- Disclaimers         -->
+        <!-- ------------------- -->
+
+        <a id="Disclaimers"></a>
+        
+	    <h2>Disclaimers</h2>
+	    <blockquote>
+
+        <p>Copyright (c) 1996-2011, F5 Networks, Inc., Seattle, Washington. All rights reserved.</p>
+
+        <p>F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, 
+        Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, 
+        CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered 
+        trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries.</p>
+        <p>All other trademarks mentioned in this document are the property of their respective owners. 
+        F5 Networks' trademarks may not be used in connection with any product or service except as permitted 
+        in writing by F5.</p>
+
+        <p>Portions of this application make use of the scintilla text editor control 
+        (<a href="http://www.scintilla.org">http://www.scintilla.org</a>) which is Copyright 
+        1998-2003 by Neil Hodgson &lt;neilh@scintilla.org&gt;.</p>
+	    </blockquote>
+	    <hr />
+    
+	</body>
+</html>

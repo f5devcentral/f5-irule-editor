@@ -1,0 +1,69 @@
+when HTTP_REQUEST {
+  # Don't allow data to be chunked
+  if { [HTTP::version] eq "1.1" } {
+      if { [HTTP::header is_keepalive] } {
+         HTTP::header replace "Connection" "Keep-Alive"
+      }
+      HTTP::version "1.0"
+   }
+}
+
+when HTTP_RESPONSE {
+  # Only check responses that are a text content type 
+  # (text/html, text/xml, text/plain, etc).
+  if { [HTTP::header "Content-Type"] starts_with "text/" } {
+    # Get the content length so we can request the data to be
+    # processed in the HTTP_RESPONSE_DATA event.
+    if { [HTTP::header exists "Content-Length"] } {
+      set content_length [HTTP::header "Content-Length"]
+    } else {
+      set content_length 4294967295
+    }
+    if { $content_length > 0 } {
+       HTTP::collect $content_length
+    }
+  }
+}
+
+when HTTP_RESPONSE_DATA {
+  # Find ALL the possible credit card numbers in one pass  
+  set card_indices [regexp -all -inline -indices {(?:3[4|7]\d{13})|(?:4\d{15})|(?:5[1-5]\d{14})|(?:6011\d{12})} [HTTP::payload]]  
+
+  foreach card_idx $card_indices {
+    set card_start [lindex $card_idx 0]
+    set card_end [lindex $card_idx 1]
+    set card_len [expr {$card_end - $card_start + 1}]
+    set card_number [string range [HTTP::payload] $card_start $card_end]
+
+    set double [expr {$card_len & 1}]  
+    set chksum 0  
+    set isCard invalid
+
+    # Calculate MOD10
+    for { set i 0 } { $i < $card_len } { incr i } { 
+       set c [string index $card_number $i]  
+       if {($i & 1) == $double} {  
+          if {[incr c $c] >= 10} {incr c -9}  
+       }  
+       incr chksum $c  
+    }  
+
+    # Determine Card Type
+    switch [string index $card_number 0] {  
+       3 { set type AmericanExpress }  
+       4 { set type Visa }  
+       5 { set type MasterCard }  
+       6 { set type Discover }  
+       default { set type Unknown }  
+    }
+    
+    # If valid card number, then mask out numbers with X's  
+    if { ($chksum % 10) == 0 } {  
+       set isCard valid 
+       HTTP::payload replace $card_start $card_len [string repeat "X" $card_len]
+    }
+    
+    # Log Results
+    log local0. "Found $isCard $type CC# $card_number"  
+  }
+}

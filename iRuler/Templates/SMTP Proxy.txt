@@ -1,0 +1,76 @@
+when CLIENT_ACCEPTED {
+    set chelo ""
+    set cfrom ""
+    set crcpt ""    
+    TCP::respond "220\r\n"
+    log local0. "client accepted"
+    TCP::collect
+}
+
+when CLIENT_DATA {
+
+    set cdata [TCP::payload]
+    if { [ string length $cdata ] <= 0 } {
+        return
+    }
+    if { not ( $cdata contains "\r\n" ) } {
+        log local0. "get <$cdata> so far"
+        return
+    }
+    if { $cdata starts_with "HELO" } {
+        set chelo [TCP::payload]
+        log local0. "get helo <$cdata>"
+        TCP::respond "250 OK\r\n"
+        TCP::payload replace 0 [string length $chelo] ""
+        return
+    }
+    if { $cdata starts_with "MAIL FROM:" } {
+        set cfrom [TCP::payload]
+        log local0. "get from <$cfrom>"
+        TCP::respond "250 OK\r\n"
+        TCP::payload replace 0 [string length $cfrom] ""
+        return
+    }
+    if { $cdata starts_with "RCPT TO:" } {
+        set crcpt "$crcpt[TCP::payload]"
+        log local0. "get rcpt <$crcpt>"
+        TCP::respond "250 OK\r\n"
+        TCP::payload replace 0 [string length [TCP::payload]] ""
+        return
+    }
+    if { $cdata starts_with "DATA" } {
+        log local0. "get data <$cdata>"
+        TCP::payload replace 0 0 $chelo$cfrom$crcpt
+    }
+    log local0. "payload [TCP::payload]"
+    TCP::release
+    TCP::collect
+}
+
+when SERVER_CONNECTED {
+    log "server connected"
+    TCP::collect
+}
+
+when SERVER_DATA {
+    set sdata [TCP::payload]
+
+    if { $sdata starts_with "220" } {
+        log local0. "get data <$sdata>"
+        TCP::payload replace 0 [string length $sdata] ""
+        return
+    }
+    if { $sdata contains "\r\n354 " } {
+        log local0. "get data <$sdata>"
+        TCP::payload replace 0 [string length $sdata] "354\r\n"
+    }
+    if { [ string length $sdata ] <= 0 } {
+        return
+    }
+    log local0. "payload <[TCP::payload]>"
+    TCP::release
+    TCP::collect
+}
+when CLIENT_CLOSED {
+    log local0. "client closed"
+}

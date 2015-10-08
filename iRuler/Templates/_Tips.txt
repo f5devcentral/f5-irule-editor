@@ -1,0 +1,4 @@
+You can archive your iRules by making use of the Import/Export commands on the File.Archive menu.
+You can drag and drop your iRules to and from your desktop?  Just click on an iRule in the iRule list and try dragging it to the desktop or your favoriate application.
+All iRule keywords are automatically highlighted and if you click on them you'll be brought to it's online documentation.
+You can check the syntax of your iRule without applying it to the BIG-IP.  Try it out by clicking the Check Syntax toobar button.
