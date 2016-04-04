@@ -61,6 +61,7 @@ namespace iRuler
             this.toolStripMenuItem_File = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_FileConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_FilePartition = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_FileFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_FileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_FileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_FileSaveAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +103,7 @@ namespace iRuler
             this.toolStripMenuItem_ViewHotspots = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_ViewStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_ShowSplashScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Tools = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_ToolsDataGroupEditor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_ToolsLogViewer = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,7 +148,6 @@ namespace iRuler
             this.panel_Middle = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.ToolStripMenuItem_FileFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_TreeViewToolbar.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip_TreeView.SuspendLayout();
@@ -529,7 +530,7 @@ namespace iRuler
             this.toolStripMenuItem_FileConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem_FileConnect.Name = "toolStripMenuItem_FileConnect";
             this.toolStripMenuItem_FileConnect.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.toolStripMenuItem_FileConnect.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_FileConnect.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_FileConnect.Text = "&Connect";
             this.toolStripMenuItem_FileConnect.Click += new System.EventHandler(this.toolStripMenuItem_FileConnect_Click);
             // 
@@ -537,8 +538,16 @@ namespace iRuler
             // 
             this.toolStripMenuItem_FilePartition.Enabled = false;
             this.toolStripMenuItem_FilePartition.Name = "toolStripMenuItem_FilePartition";
-            this.toolStripMenuItem_FilePartition.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_FilePartition.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_FilePartition.Text = "&Partition";
+            // 
+            // ToolStripMenuItem_FileFolder
+            // 
+            this.ToolStripMenuItem_FileFolder.Enabled = false;
+            this.ToolStripMenuItem_FileFolder.Name = "ToolStripMenuItem_FileFolder";
+            this.ToolStripMenuItem_FileFolder.Size = new System.Drawing.Size(141, 22);
+            this.ToolStripMenuItem_FileFolder.Text = "&Folder";
+            this.ToolStripMenuItem_FileFolder.Visible = false;
             // 
             // toolStripMenuItem_FileNew
             // 
@@ -546,7 +555,7 @@ namespace iRuler
             this.toolStripMenuItem_FileNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem_FileNew.Name = "toolStripMenuItem_FileNew";
             this.toolStripMenuItem_FileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.toolStripMenuItem_FileNew.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_FileNew.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_FileNew.Text = "&New";
             this.toolStripMenuItem_FileNew.Click += new System.EventHandler(this.toolStripMenuItem_FileNew_Click);
             // 
@@ -556,7 +565,7 @@ namespace iRuler
             this.toolStripMenuItem_FileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem_FileSave.Name = "toolStripMenuItem_FileSave";
             this.toolStripMenuItem_FileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.toolStripMenuItem_FileSave.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_FileSave.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_FileSave.Text = "&Save";
             this.toolStripMenuItem_FileSave.Click += new System.EventHandler(this.toolStripMenuItem_FileSave_Click);
             // 
@@ -565,7 +574,7 @@ namespace iRuler
             this.toolStripMenuItem_FileSaveAll.Image = global::iRuler.Properties.Resources.ToolbarSaveAll;
             this.toolStripMenuItem_FileSaveAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem_FileSaveAll.Name = "toolStripMenuItem_FileSaveAll";
-            this.toolStripMenuItem_FileSaveAll.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_FileSaveAll.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_FileSaveAll.Text = "Save &All";
             this.toolStripMenuItem_FileSaveAll.Click += new System.EventHandler(this.toolStripMenuItem_FileSaveAll_Click);
             // 
@@ -574,14 +583,14 @@ namespace iRuler
             this.toolStripMenuItem_FileDelete.Image = global::iRuler.Properties.Resources.ToolbarDelete;
             this.toolStripMenuItem_FileDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem_FileDelete.Name = "toolStripMenuItem_FileDelete";
-            this.toolStripMenuItem_FileDelete.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_FileDelete.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_FileDelete.Text = "&Delete";
             this.toolStripMenuItem_FileDelete.Click += new System.EventHandler(this.toolStripMenuItem_FileDelete_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(138, 6);
             // 
             // toolStripMenuItem_FileArchive
             // 
@@ -593,7 +602,7 @@ namespace iRuler
             this.toolStripMenuItem_FileArchive.Image = global::iRuler.Properties.Resources.ToolbarArchive;
             this.toolStripMenuItem_FileArchive.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem_FileArchive.Name = "toolStripMenuItem_FileArchive";
-            this.toolStripMenuItem_FileArchive.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_FileArchive.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_FileArchive.Text = "A&rchive";
             // 
             // toolStripMenuItem_FileArchiveExport
@@ -629,12 +638,12 @@ namespace iRuler
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(138, 6);
             // 
             // toolStripMenuItem_Exit
             // 
             this.toolStripMenuItem_Exit.Name = "toolStripMenuItem_Exit";
-            this.toolStripMenuItem_Exit.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_Exit.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItem_Exit.Text = "E&xit";
             this.toolStripMenuItem_Exit.Click += new System.EventHandler(this.toolStripMenuItem_Exit_Click);
             // 
@@ -777,7 +786,8 @@ namespace iRuler
             this.toolStripMenuItem_ViewAutoComplete,
             this.toolStripMenuItem_ViewHotspots,
             this.toolStripSeparator9,
-            this.toolStripMenuItem_ViewStatus});
+            this.toolStripMenuItem_ViewStatus,
+            this.toolStripMenuItem_ShowSplashScreen});
             this.toolStripMenuItem_View.Name = "toolStripMenuItem_View";
             this.toolStripMenuItem_View.Size = new System.Drawing.Size(44, 20);
             this.toolStripMenuItem_View.Text = "&View";
@@ -882,6 +892,13 @@ namespace iRuler
             this.toolStripMenuItem_ViewStatus.Size = new System.Drawing.Size(223, 22);
             this.toolStripMenuItem_ViewStatus.Text = "&Status";
             this.toolStripMenuItem_ViewStatus.Click += new System.EventHandler(this.toolStripMenuItem_ViewStatus_Click);
+            // 
+            // toolStripMenuItem_ShowSplashScreen
+            // 
+            this.toolStripMenuItem_ShowSplashScreen.Name = "toolStripMenuItem_ShowSplashScreen";
+            this.toolStripMenuItem_ShowSplashScreen.Size = new System.Drawing.Size(223, 22);
+            this.toolStripMenuItem_ShowSplashScreen.Text = "S&how Splash Screen";
+            this.toolStripMenuItem_ShowSplashScreen.Click += new System.EventHandler(this.toolStripMenuItem_ShowSplashScreen_Click);
             // 
             // toolStripMenuItem_Tools
             // 
@@ -1105,7 +1122,7 @@ namespace iRuler
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(442, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(461, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton_Connect
@@ -1225,7 +1242,7 @@ namespace iRuler
             this.statusStripLabel_Connection.AutoSize = false;
             this.statusStripLabel_Connection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.statusStripLabel_Connection.Name = "statusStripLabel_Connection";
-            this.statusStripLabel_Connection.Size = new System.Drawing.Size(412, 17);
+            this.statusStripLabel_Connection.Size = new System.Drawing.Size(420, 17);
             this.statusStripLabel_Connection.Spring = true;
             this.statusStripLabel_Connection.Text = "Disconnected. Click the Connect button...";
             this.statusStripLabel_Connection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1303,14 +1320,6 @@ namespace iRuler
             this.splitContainer2.Size = new System.Drawing.Size(516, 551);
             this.splitContainer2.SplitterDistance = 506;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // ToolStripMenuItem_FileFolder
-            // 
-            this.ToolStripMenuItem_FileFolder.Enabled = false;
-            this.ToolStripMenuItem_FileFolder.Name = "ToolStripMenuItem_FileFolder";
-            this.ToolStripMenuItem_FileFolder.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItem_FileFolder.Text = "&Folder";
-            this.ToolStripMenuItem_FileFolder.Visible = false;
             // 
             // iRulerMain
             // 
@@ -1475,5 +1484,6 @@ namespace iRuler
         private ToolStripMenuItem toolStripMenuItem_Reload;
         private ToolStripMenuItem toolStripMenuItem_FileArchiveSetLocation;
         private ToolStripMenuItem ToolStripMenuItem_FileFolder;
+        private ToolStripMenuItem toolStripMenuItem_ShowSplashScreen;
     }
 }

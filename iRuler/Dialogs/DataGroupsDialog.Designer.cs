@@ -65,6 +65,7 @@ namespace iRuler.Dialogs
             this.listBox_Address.TabIndex = 1;
             this.listBox_Address.Tag = "1";
             this.listBox_Address.SelectedIndexChanged += new System.EventHandler(this.listBox_Address_SelectedIndexChanged);
+            this.listBox_Address.DoubleClick += new System.EventHandler(this.button_EditAddress_Click);
             // 
             // listBox_Integer
             // 
@@ -79,6 +80,7 @@ namespace iRuler.Dialogs
             this.listBox_Integer.TabIndex = 6;
             this.listBox_Integer.Tag = "2";
             this.listBox_Integer.SelectedIndexChanged += new System.EventHandler(this.listBox_Integer_SelectedIndexChanged);
+            this.listBox_Integer.DoubleClick += new System.EventHandler(this.button_EditInteger_Click);
             // 
             // listBox_String
             // 
@@ -93,6 +95,7 @@ namespace iRuler.Dialogs
             this.listBox_String.TabIndex = 11;
             this.listBox_String.Tag = "3";
             this.listBox_String.SelectedIndexChanged += new System.EventHandler(this.listBox_String_SelectedIndexChanged);
+            this.listBox_String.DoubleClick += new System.EventHandler(this.button_EditString_Click);
             // 
             // label1
             // 

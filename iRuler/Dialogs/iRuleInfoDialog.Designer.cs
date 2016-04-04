@@ -30,6 +30,9 @@ namespace iRuler.Dialogs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(iRuleInfoDialog));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Membership_LTM = new System.Windows.Forms.TabPage();
+            this.button_ApplyDescription = new System.Windows.Forms.Button();
+            this.textBox_Description = new System.Windows.Forms.TextBox();
+            this.label_Description = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox_Pools = new System.Windows.Forms.ListBox();
@@ -68,9 +71,6 @@ namespace iRuler.Dialogs
             this.label1 = new System.Windows.Forms.Label();
             this.button_OK = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
-            this.label_Description = new System.Windows.Forms.Label();
-            this.textBox_Description = new System.Windows.Forms.TextBox();
-            this.button_ApplyDescription = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage_Membership_LTM.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -102,6 +102,35 @@ namespace iRuler.Dialogs
             this.tabPage_Membership_LTM.TabIndex = 1;
             this.tabPage_Membership_LTM.Text = "Membership";
             this.tabPage_Membership_LTM.UseVisualStyleBackColor = true;
+            // 
+            // button_ApplyDescription
+            // 
+            this.button_ApplyDescription.Enabled = false;
+            this.button_ApplyDescription.Location = new System.Drawing.Point(17, 321);
+            this.button_ApplyDescription.Name = "button_ApplyDescription";
+            this.button_ApplyDescription.Size = new System.Drawing.Size(68, 23);
+            this.button_ApplyDescription.TabIndex = 14;
+            this.button_ApplyDescription.Text = "Apply";
+            this.button_ApplyDescription.Click += new System.EventHandler(this.button_ApplyDescription_Click);
+            // 
+            // textBox_Description
+            // 
+            this.textBox_Description.Location = new System.Drawing.Point(91, 313);
+            this.textBox_Description.Multiline = true;
+            this.textBox_Description.Name = "textBox_Description";
+            this.textBox_Description.Size = new System.Drawing.Size(323, 31);
+            this.textBox_Description.TabIndex = 13;
+            this.textBox_Description.TextChanged += new System.EventHandler(this.textBox_Description_TextChanged);
+            // 
+            // label_Description
+            // 
+            this.label_Description.AutoSize = true;
+            this.label_Description.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Description.Location = new System.Drawing.Point(14, 305);
+            this.label_Description.Name = "label_Description";
+            this.label_Description.Size = new System.Drawing.Size(71, 13);
+            this.label_Description.TabIndex = 12;
+            this.label_Description.Text = "Description";
             // 
             // groupBox2
             // 
@@ -179,6 +208,7 @@ namespace iRuler.Dialogs
             this.listBox_VirtualServersUsing.Sorted = true;
             this.listBox_VirtualServersUsing.TabIndex = 1;
             this.listBox_VirtualServersUsing.SelectedIndexChanged += new System.EventHandler(this.listBox_VirtualServersUsing_SelectedIndexChanged);
+            this.listBox_VirtualServersUsing.DoubleClick += new System.EventHandler(this.button_RemoveVirtual_Click);
             // 
             // listBox_VirtualServersNotUsing
             // 
@@ -190,6 +220,7 @@ namespace iRuler.Dialogs
             this.listBox_VirtualServersNotUsing.Sorted = true;
             this.listBox_VirtualServersNotUsing.TabIndex = 0;
             this.listBox_VirtualServersNotUsing.SelectedIndexChanged += new System.EventHandler(this.listBox_VirtualServersNotUsing_SelectedIndexChanged);
+            this.listBox_VirtualServersNotUsing.DoubleClick += new System.EventHandler(this.button_AddVirtual_Click);
             // 
             // label2
             // 
@@ -471,35 +502,6 @@ namespace iRuler.Dialogs
             this.button_Cancel.TabIndex = 2;
             this.button_Cancel.Text = "&Cancel";
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
-            // 
-            // label_Description
-            // 
-            this.label_Description.AutoSize = true;
-            this.label_Description.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Description.Location = new System.Drawing.Point(14, 305);
-            this.label_Description.Name = "label_Description";
-            this.label_Description.Size = new System.Drawing.Size(71, 13);
-            this.label_Description.TabIndex = 12;
-            this.label_Description.Text = "Description";
-            // 
-            // textBox_Description
-            // 
-            this.textBox_Description.Location = new System.Drawing.Point(91, 313);
-            this.textBox_Description.Multiline = true;
-            this.textBox_Description.Name = "textBox_Description";
-            this.textBox_Description.Size = new System.Drawing.Size(323, 31);
-            this.textBox_Description.TabIndex = 13;
-            this.textBox_Description.TextChanged += new System.EventHandler(this.textBox_Description_TextChanged);
-            // 
-            // button_ApplyDescription
-            // 
-            this.button_ApplyDescription.Enabled = false;
-            this.button_ApplyDescription.Location = new System.Drawing.Point(17, 321);
-            this.button_ApplyDescription.Name = "button_ApplyDescription";
-            this.button_ApplyDescription.Size = new System.Drawing.Size(68, 23);
-            this.button_ApplyDescription.TabIndex = 14;
-            this.button_ApplyDescription.Text = "Apply";
-            this.button_ApplyDescription.Click += new System.EventHandler(this.button_ApplyDescription_Click);
             // 
             // iRuleInfoDialog
             // 
