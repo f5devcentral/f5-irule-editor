@@ -12,11 +12,17 @@
     <AssemblyName>iRuler</AssemblyName>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <ManifestCertificateThumbprint>1DD3C17AC1AE039D9964DA5C161EDDF83A1A8B67</ManifestCertificateThumbprint>
-    <ManifestKeyFile>iRuler_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>7C144D0FC1F44A3A038D6CDF07B0D60CE0256A37</ManifestCertificateThumbprint>
+    <ManifestKeyFile>iRuler_1_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <TargetZone>LocalIntranet</TargetZone>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <PublishUrl>D:\src\Publish\iRuler\web\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -33,15 +39,10 @@
     <TargetCulture>en</TargetCulture>
     <ProductName>F5 iRule Editor</ProductName>
     <PublisherName>F5 Networks</PublisherName>
-    <ApplicationVersion>0.9.1.%2a</ApplicationVersion>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
     <ApplicationRevision>4</ApplicationRevision>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <ApplicationVersion>0.9.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -311,7 +312,6 @@
     <EmbeddedResource Include="Resources\ToolbarTraffic.bmp" />
     <EmbeddedResource Include="Resources\ToolbarUndo.bmp" />
     <EmbeddedResource Include="Resources\ToolbarWebLink.bmp" />
-    <None Include="iRuler_TemporaryKey.pfx" />
     <BaseApplicationManifest Include="Properties\app.manifest" />
     <None Include="Dialogs\Templates\Blank.txt" />
     <None Include="Dialogs\Templates\Cookie Encryption.txt" />
@@ -326,10 +326,20 @@
     <None Include="Dialogs\Templates\_Tips.txt" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
       <ProductName>.NET Framework 2.0</ProductName>
       <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>

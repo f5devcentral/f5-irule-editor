@@ -3406,14 +3406,12 @@ namespace iRuler
                 {
                     case '\n':
                         return '\0';
-                        break;
                     case ' ':
                     case '\t':
                     case '\r':
                         break;
                     default:
                         return c;
-                        break;
                 }
                 --pos;
             }
