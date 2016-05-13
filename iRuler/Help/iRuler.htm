@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>F5 iRule Editor Help - Version 0.11.0.1</title>
+		<title>F5 iRule Editor Help - Version 0.11.0.2</title>
         <style type="text/css"">
             BODY { FONT-family: Tahoma,verdana,sans-serif; background-color: white; font-size: 12px;}
             .Product.Description{font: x-small arial,sans-serif; color:#333;}
@@ -25,7 +25,7 @@
 	</head>
 	<body>
         <a id="Top"></a>
-	    <h1>F5 iRule Editor Help - Version 0.11.0.1</h1>
+	    <h1>F5 iRule Editor Help - Version 0.11.0.2</h1>
 	    <p>
 	        The F5 iRule Editor is a windows editor for the iRule language.
 	    </p>
@@ -86,7 +86,7 @@
 	        and saving iRules, but what about deployment?  So, I spent one more day on building an iRule property page that includes the logic
 	        to deploy the iRules to virtual servers as well as displaying their statistics.  The final missing piece was the GUI to create and manage
 	        Data Groups.  These are lists of strings, integers, or addresses that can be used in conjuction with our 
-	        <a href="http://devcentral.f5.com/wiki/default.aspx/iRules.findclass">findclass</a> and <a href="http://devcentral.f5.com/wiki/default.aspx/iRules.findclass">matchclass</a>
+	        <a href="https://devcentral.f5.com/wiki/iRules.findclass.ashx">findclass</a> and <a href="https://devcentral.f5.com/wiki/iRules.matchclass.ashx">matchclass</a>
 	        methods.  Another few hours over the weekend got the final piece in place.
 	    </p>
 	    
@@ -652,6 +652,15 @@
         <a id="WhatsNew"></a>
 	    <h2>What's New</h2>
 	    <blockquote>
+            <h3>0.11.0.3 - 2016/03/16</h3>
+                <ul>
+                    <li>ENH: Added doubleclick for most listboxes so you don't have to select item and then open what would be the default action (generally Edit).</li>
+                </ul>
+            <h3>0.11.0.2 - 2011/11/02</h3>
+                <ul>
+                    <li>ENH: Edit Group Dialog now uses a resizable ListView and supports resizing.</li>
+                    <li>FIX: Fixed support for data group values for string classes that was broken in the last build.</li>
+                </ul>
 	        <h3>0.11.0.1 - 2011/10/19</h3>
 	            <ul>
                     <li>ENH: Updated to the v11.0.0.1 iControl.dll</li>

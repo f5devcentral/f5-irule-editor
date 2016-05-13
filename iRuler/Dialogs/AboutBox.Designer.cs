@@ -38,8 +38,8 @@ namespace iRuler.Dialogs
             this.richTextBox_Copyright = new System.Windows.Forms.RichTextBox();
             this.textBox_Version = new System.Windows.Forms.TextBox();
             this.textBox_AppName = new System.Windows.Forms.TextBox();
+			this.timer_AutoClose = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer_AutoClose = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -160,6 +160,10 @@ namespace iRuler.Dialogs
             this.textBox_AppName.Size = new System.Drawing.Size(60, 45);
             this.textBox_AppName.TabIndex = 1;
             // 
+			// timer_AutoClose
+			// 
+			this.timer_AutoClose.Tick += new System.EventHandler(this.timer_AutoClose_Tick);
+			// 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -169,10 +173,6 @@ namespace iRuler.Dialogs
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.button_OK_Click);
-            // 
-            // timer_AutoClose
-            // 
-            this.timer_AutoClose.Tick += new System.EventHandler(this.timer_AutoClose_Tick);
             // 
             // AboutBox
             // 
@@ -192,8 +192,8 @@ namespace iRuler.Dialogs
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About F5 iRule Editor";
             this.TopMost = true;
+			this.Click += new System.EventHandler(this.button_OK_Click);
             this.Load += new System.EventHandler(this.AboutBox_Load);
-            this.Click += new System.EventHandler(this.button_OK_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

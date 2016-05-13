@@ -36,10 +36,8 @@
 //===========================================================================
 using System;
 using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
 using iControl;
 using iRuler.Dialogs;
 using iRuler.Utility;
@@ -50,7 +48,7 @@ namespace iRuler
 	/// <summary>
 	/// Summary description for Form1.
 	/// </summary>
-	public partial class iRulerMain : System.Windows.Forms.Form
+	public partial class iRulerMain : Form
     {
         // For Auto-DragScroll functionality
         [DllImport("user32.dll")]
@@ -295,14 +293,13 @@ namespace iRuler
                 f5Key.SetValue("IndentionGuides", m_showIndentionGuides);
                 f5Key.SetValue("Status", m_showStatus);
                 f5Key.SetValue("LastUpdate", m_lastUpdate.ToString());
-                f5Key.SetValue("WindowPosition", 
-                    this.Location.X.ToString() + "," + this.Location.Y.ToString() + "," +
-                    this.Width.ToString() + "," + this.Height.ToString());
+                f5Key.SetValue("WindowPosition", string.Format("{0},{1},{2},{3}", Location.X, Location.Y, Width, Height));
 				f5Key.SetValue("AutoIndent", m_autoIndent);
 				f5Key.SetValue("UseTabs", m_useTabs);
 				f5Key.SetValue("TabSize", m_tabSize);
 				f5Key.SetValue("IndentSize", m_indentSize);
 				f5Key.SetValue("AutoSaveConfig", m_autoSaveConfig);
+                f5Key.SetValue("ShowSplashScreen", m_showSplashScreen);
                 //f5Key.SetValue("ConfigurationEditing", m_configurationEditing);
                 //f5Key.SetValue("OfflineEditing", m_offlineEditing);
                 f5Key.SetValue("ArchiveDirectory", m_archiveDirectory);
@@ -1056,6 +1053,7 @@ namespace iRuler
             toolStripMenuItem_ViewAutoComplete.Checked = m_showAutoComplete;
             toolStripMenuItem_ViewHotspots.Checked = m_showHotspots;
             toolStripMenuItem_ViewIndentionGuides.Checked = m_showIndentionGuides;
+		    toolStripMenuItem_ShowSplashScreen.Checked = m_showSplashScreen;
 			ToolStripMenuItem_ToolsBIGIPConfigAutoSave.Checked = m_autoSaveConfig;
 
             bool hasSelection = (m_textEditor.SelectionStart != m_textEditor.SelectionEnd);
@@ -1728,6 +1726,11 @@ namespace iRuler
 			m_textEditor.set_MarginWidthN(2, m_showFoldMargin ? foldMarginWidthDefault : 0);
 			updateMenus();
 		}
+        public void showSplashScreen(bool bShow)
+        {
+            m_showSplashScreen = bShow;
+            updateMenus();
+        }
         public void showAutoComplete(bool bShow)
         {
             m_showAutoComplete = bShow;
@@ -3403,14 +3406,12 @@ namespace iRuler
                 {
                     case '\n':
                         return '\0';
-                        break;
                     case ' ':
                     case '\t':
                     case '\r':
                         break;
                     default:
                         return c;
-                        break;
                 }
                 --pos;
             }
@@ -3880,6 +3881,10 @@ namespace iRuler
         {
             DoViewStatus();
         }
+        private void toolStripMenuItem_ShowSplashScreen_Click(object sender, EventArgs e)
+        {
+            showSplashScreen(!m_showSplashScreen);
+        }
 		private void ToolStripMenuItem_ViewChangeIndentionSettings_Click(object sender, EventArgs e)
 		{
 			IndentionSettingsDialog isd = new IndentionSettingsDialog();
@@ -3961,7 +3966,7 @@ namespace iRuler
         }
         private void toolStripMenuItem_HelpiRulesReference_Click(object sender, EventArgs e)
         {
-            Configuration.LaunchProcess("http://devcentral.f5.com/wiki/default.aspx/iRules.HomePage");
+            Configuration.LaunchProcess("https://devcentral.f5.com/wiki/iRules.HomePage.ashx");
         }
         private void toolStripMenuItem_HelpTCLReference_Click(object sender, EventArgs e)
         {

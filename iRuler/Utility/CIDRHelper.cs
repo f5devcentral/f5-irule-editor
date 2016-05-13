@@ -36,6 +36,7 @@
 //===========================================================================
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace iRuler.Utility
@@ -121,7 +122,8 @@ namespace iRuler.Utility
                 {
                     // TODO: This won't work for IPv6!
                     System.Net.IPAddress ipmask = System.Net.IPAddress.Parse(mask);
-                    if (ipaddr.Address == (ipaddr.Address & ipmask.Address))
+                    //if (ipaddr.Address == (ipaddr.Address & ipmask.Address))
+                    if (IPAddress.Equals(ipaddr.Address, (ipaddr.Address & ipmask.Address)))
                     {
                         bValid = true;
                     }
